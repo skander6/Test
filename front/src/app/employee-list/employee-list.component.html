@@ -1,0 +1,34 @@
+<br> <br>
+<div class="row d-flex justify-content-center">
+  <div class="card border-secondary col-10">
+    <hr>
+    <a class="btn btn-primary" [routerLink]="[ '/addEmployee']">Add Employee</a>
+    <hr>
+    <table class="table">
+    <thead>
+    <tr>
+      <th hidden>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>tel</th>
+      <th>adress</th>
+      <th>birth date</th>
+    </tr>
+    </thead>
+    <tbody>
+     
+    <tr *ngFor="let employee of employees">
+      <td>{{employee.firstName}}</td>
+      <td>{{employee.lastName}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.tel}}</td>
+      <td>{{employee.adress}}</td>
+      <td>{{employee.birthDate}}</td>
+ 
+    </tr>
+  
+    </tbody>
+    </table>
+  </div>
+</div>
