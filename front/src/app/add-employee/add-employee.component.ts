@@ -11,14 +11,14 @@ import { EmployeeService } from '../service/employee.service';
 export class AddEmployeeComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,private router: Router,private service: EmployeeService) { }
-
+  public error : boolean =false;
   createForm = this.formBuilder.group({ 
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', Validators.compose([Validators.required, Validators.email])],
     tel: ['', Validators.required], 
     adress: ['', Validators.required], 
-    birthDate: ['', Validators.required], 
+    birthDate: ['', Validators.required],
    
   });
 
@@ -29,7 +29,7 @@ export class AddEmployeeComponent implements OnInit {
     this.service.createClient(this.createForm.value)
     .subscribe(res => {
       this.router.navigate(['employeeList']);
-       },err=>{alert("Employee already exist !")})
+       },err=>{this.error=true})
     }
   
 
